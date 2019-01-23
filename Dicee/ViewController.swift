@@ -41,5 +41,20 @@ class ViewController: UIViewController {
         self.diceImageView2.image = newImg2
     }
     
+    // We are willing to become first responder to get shake motion
+    override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    
+    // Enable detection of shake motion
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            self.rollDices()
+        }
+    }
+    
+
 }
 
